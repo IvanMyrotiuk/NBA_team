@@ -28,6 +28,7 @@ public class Player implements Serializable{
     private Team team;
 
     private String name;
-    private Integer age;
+    private String phone;
+    private Integer height;
 
 }

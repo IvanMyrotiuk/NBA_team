@@ -1,18 +1,14 @@
 package com.java.myrotiuk.nba.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by Ivan on 13.01.2019. All rights reserved.
@@ -24,13 +20,35 @@ import java.util.Set;
 public class Team implements Serializable{
 
     @Id
-    @SequenceGenerator(name = "team_id_seq", sequenceName = "team_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "team_id_seq")
-    private Integer id;
+    @Column(name = "team_id")
+    @JsonProperty("team_id")
+    private String id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
-    private Set<Player> players;
+    private String abbreviation;
 
-    private String name;
+    private Boolean active;
 
+    @Column(name = "first_name")
+    @JsonProperty("first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    @JsonProperty("last_name")
+    private String lastName;
+
+    private String conference;
+
+    private String division;
+
+    @Column(name = "site_name")
+    @JsonProperty("site_name")
+    private String siteName;
+
+    private String city;
+
+    private String state;
+
+    @Column(name = "full_name")
+    @JsonProperty("full_name")
+    private String fullName;
 }

@@ -14,10 +14,14 @@ interface BaseRepository<T, ID> extends Repository<T, ID>{
 
     <S extends T> S save(S var1);
 
+    <S extends T> List<S> saveAll(Iterable<S> var1);
+
     List<T> findAll();
 
     Optional<T> findById(ID id);
 
     void deleteById(ID id);
+
+    void deleteAll(Iterable<? extends T> var1);
 
 }

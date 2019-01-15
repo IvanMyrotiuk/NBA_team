@@ -8,26 +8,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Ivan on 12.01.2019. All rights reserved.
  */
 @RestController
-public class NBAController {
+@RequestMapping("/team")
+public class TeamController {
 
     @Autowired
     private TeamService teamService;
 
-    @GetMapping(value = "/", produces = "application/json")
-    public String hello() {
-        return "Hello World and NBA!!!";
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<Team>> listTeam(){
+        return ResponseEntity.ok(teamService.getAll());
     }
 
-
-    @PostMapping(value = "/team/add", consumes = "application/json")
+    @PostMapping(consumes = "application/json")
     public ResponseEntity<Team> saveTeam(@RequestBody Team team) {
-        return new ResponseEntity<>(teamService.save(team), HttpStatus.OK);
+        return ResponseEntity.ok(teamService.save(team));
     }
 
 }

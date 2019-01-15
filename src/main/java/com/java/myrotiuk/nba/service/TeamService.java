@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -24,7 +23,7 @@ public class TeamService {
     private ClientTeamService clientTeamService;
 
     @PostConstruct
-    public List<Team> refreshTeams(){
+    public List<Team> refreshTeams() {
         List<Team> teams = clientTeamService.fetchAll();
         List<Team> dbTeams = getAll();
         List<Team> elemsToDelete = getElemToDelete(teams, dbTeams);
@@ -32,26 +31,26 @@ public class TeamService {
         return saveAll(teams);
     }
 
-    private <T> List<T> getElemToDelete(List<T> currElems, List<T> dbElems){
+    private <T> List<T> getElemToDelete(List<T> currElems, List<T> dbElems) {
         Set<T> copyCurrElems = new HashSet<>(currElems);
         Set<T> copyDbElems = new HashSet<>(dbElems);
         copyDbElems.removeAll(copyCurrElems);
         return new ArrayList<>(copyDbElems);
     }
 
-    public List<Team> getAll(){
+    public List<Team> getAll() {
         return teamRepository.findAll();
     }
 
-    public Team save(Team team){
+    public Team save(Team team) {
         return teamRepository.save(team);
     }
 
-    public List<Team> saveAll(List<Team> teams){
+    public List<Team> saveAll(List<Team> teams) {
         return teamRepository.saveAll(teams);
     }
 
-    public void deleteAll(List<Team> teams){
+    public void deleteAll(List<Team> teams) {
         teamRepository.deleteAll(teams);
     }
 }

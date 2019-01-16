@@ -1,9 +1,8 @@
 package com.java.myrotiuk.nba.controller;
 
 import com.java.myrotiuk.nba.entity.Team;
-import com.java.myrotiuk.nba.service.TeamService;
+import com.java.myrotiuk.nba.service.TeamServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,16 +20,16 @@ import java.util.List;
 public class TeamController {
 
     @Autowired
-    private TeamService teamService;
+    private TeamServiceImpl teamServiceImpl;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<List<Team>> listTeam(){
-        return ResponseEntity.ok(teamService.getAll());
+    public ResponseEntity<List<Team>> listTeam() {
+        return ResponseEntity.ok(teamServiceImpl.getAll());
     }
 
     @PostMapping(consumes = "application/json")
     public ResponseEntity<Team> saveTeam(@RequestBody Team team) {
-        return ResponseEntity.ok(teamService.save(team));
+        return ResponseEntity.ok(teamServiceImpl.save(team));
     }
 
 }

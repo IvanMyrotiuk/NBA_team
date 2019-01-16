@@ -13,11 +13,11 @@ import java.io.Serializable;
 /**
  * Created by Ivan on 13.01.2019. All rights reserved.
  */
-@Entity(name = "team")
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Team implements Serializable{
+public class Team implements Serializable {
 
     @Id
     @Column(name = "team_id")

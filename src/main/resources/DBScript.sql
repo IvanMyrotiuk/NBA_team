@@ -19,7 +19,7 @@ CREATE TABLE team
 CREATE TABLE player
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('player_id_seq'),
-  team_id varchar(100) NOT NULL FOREIGN KEY REFERENCES team (team_id) ON UPDATE CASCADE ON DELETE RESTRICT,
+  team_id varchar(100) REFERENCES team (team_id) ON UPDATE CASCADE ON DELETE SET NULL,
   name varchar(45) NOT NULL,
   phone varchar(45) NOT NULL,
   height integer

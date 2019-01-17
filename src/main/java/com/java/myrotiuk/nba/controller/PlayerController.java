@@ -6,6 +6,7 @@ import com.java.myrotiuk.nba.service.PlayerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class PlayerController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Player> savePlayer(@RequestBody PlayerDTO playerDTO) {
         Player player = modelMapper.map(playerDTO, Player.class);
         return ResponseEntity.ok(playerService.save(player));

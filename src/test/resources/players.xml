@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Team id="team1"/>
+    <Player id="1" name="John" phone="412-45-55" height="181"/>
+    <Player id="2" name="Lilu" phone="412-45-56" height="161"/>
+    <Player id="3" name="Suzi" phone="412-45-57" height="167"/>
+</dataset>
